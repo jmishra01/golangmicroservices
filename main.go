@@ -15,10 +15,12 @@ func main() {
 	l := log.New(os.Stdout, "[Golang] ", log.LstdFlags)
 	new_hello := handlers.NewHello(l)
 	new_golang := handlers.NewGolang(l)
+	new_products := handlers.NewProducts(l)
 
 	newServeMux := http.NewServeMux()
 	newServeMux.Handle("/", new_hello)
 	newServeMux.Handle("/golang", new_golang)
+	newServeMux.Handle("/product", new_products)
 
 	server := &http.Server{
 		Addr:         ":9090",
